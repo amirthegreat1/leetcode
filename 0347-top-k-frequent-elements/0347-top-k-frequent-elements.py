@@ -1,3 +1,4 @@
+from collections import Counter
 class Solution(object):
     def topKFrequent(self, nums, k):
         """
@@ -5,10 +6,7 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
-        num_count={}
-        numset = list(set(nums))
-        for i , n in enumerate (numset):
-            num_count[n] = nums.count(n)
-        numset.sort(key=lambda x: num_count[x], reverse=True)
-        
-        return [numset[i] for i in range(k)]
+        #pythonic way
+        return [num for num, count in Counter(nums).most_common(k)]
+ 
+
